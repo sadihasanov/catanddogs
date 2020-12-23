@@ -5,13 +5,13 @@ import pickle
 from keras.layers import Conv2D, MaxPooling2D
 
 
-pickle_import = open(r"/PetImages/X.pickle", 'rb')
+pickle_import = open(r"/PATH/X.pickle", 'rb')
 x = pickle.load(pickle_import)
 
-pickle_import = open(r"/PetImages/y.pickle", 'rb')
+pickle_import = open(r"/PATH/y.pickle", 'rb')
 y = pickle.load(pickle_import)
 
-x = x / 255.0 # Normalization / Scaling down the features, so there are no big numbers and easier to train neural netwrok
+x = x / 255.0  # Normalization / Scaling down the features, so there are no big numbers and easier to train neural netwrok
 
 model = Sequential()
 
@@ -33,4 +33,4 @@ model.compile(loss="binary_crossentropy", optimizer='adam', metrics=['accuracy']
 
 model.fit(x, y, batch_size=32, epochs=100, validation_split=0.3)
 
-model.save(r"C:\Users\sadi\PycharmProjects\DeepLearning_Cats_Dogs\PetImages\FINALML.model")
+model.save(r"Your_Path\FINALML.model")

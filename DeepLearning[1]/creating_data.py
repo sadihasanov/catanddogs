@@ -5,7 +5,7 @@ import os
 import pickle
 
 
-DataDir = r"C:\Users\sadi\PycharmProjects\DeepLearning_Cats_Dogs\PetImages\PetImages/"
+DataDir = r"PATH"
 
 categories = ["Dog", "Cat"]
 
@@ -29,16 +29,16 @@ training_data = []
 
 def create_training_data():
     for i in categories:
-        path = os.path.join(DataDir, i) # Creates a path to the needed folder (Dogs and Cats)
-        class_num = categories.index(i) # Stores index to understand is it a dog or is it a cat
+        path = os.path.join(DataDir, i)  # Creates a path to the needed folder (Dogs and Cats)
+        class_num = categories.index(i)  # Stores index to understand is it a dog or is it a cat
 
-        for img in os.listdir(path): # os.listdir goes through all the files withing the directory
+        for img in os.listdir(path):  # os.listdir goes through all the files withing the directory
             try:
-                img_array = cv2.imread(os.path.join(path, img), cv2.IMREAD_GRAYSCALE) # Here we turned image into array using cv2.imread. cv2.IMREAD_GRAYSCALE turnes picture into black and white as it weighs less
-                new_array = cv2.resize(img_array, (img_size, img_size)) # We resize picture to make it weight less
-                training_data.append([new_array, class_num]) # Append our array with photo and number to understand is it a dog or is it a cat
+                img_array = cv2.imread(os.path.join(path, img), cv2.IMREAD_GRAYSCALE)  # Here we turned image into array using cv2.imread. cv2.IMREAD_GRAYSCALE turnes picture into black and white as it weighs less
+                new_array = cv2.resize(img_array, (img_size, img_size))  # We resize picture to make it weight less
+                training_data.append([new_array, class_num])  # Append our array with photo and number to understand is it a dog or is it a cat
 
-            except Exception: # Some images might be corrupted, to avoid code to stop, we use try/except method
+            except Exception:  # Some images might be corrupted, to avoid code to stop, we use try/except method
                 pass
 
 
@@ -48,12 +48,12 @@ print(len(training_data))
 
 import random
 
-random.shuffle(training_data) # Command to shuffle all the files in the given array
-for sample in training_data[:10]: # Just for the example print the first ten elements in the file to make sure that they are shuffled properly
+random.shuffle(training_data)  # Command to shuffle all the files in the given array
+for sample in training_data[:10]:  # Just for the example print the first ten elements in the file to make sure that they are shuffled properly
     print(sample)
 
-x = [] # For all the arrays, we call them features
-y = [] # For all the labels 1 - Cat, 0 - Dog
+x = []  # For all the arrays, we call them features
+y = []  # For all the labels 1 - Cat, 0 - Dog
 
 for features, labels in training_data:
     x.append(features)
